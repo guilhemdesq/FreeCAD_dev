@@ -198,3 +198,16 @@ void ViewProviderItemAssembly::drop(const std::vector<const App::DocumentObject*
         gui->commitCommand();
 
 }
+
+
+// Python feature -----------------------------------------------------------------------
+
+namespace Gui {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(AssemblyGui::ViewProviderItemAssemblyPython, AssemblyGui::ViewProviderItemAssembly)
+/// @endcond
+
+// explicit template instantiation
+template class GuiExport ViewProviderPythonFeatureT<ViewProviderItemAssembly>;
+}
+

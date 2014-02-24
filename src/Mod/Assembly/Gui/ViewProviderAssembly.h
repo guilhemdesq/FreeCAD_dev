@@ -27,7 +27,7 @@
 #include "ViewProvider.h"
 #include <QMenu>
 #include <QObject>
-
+#include <Gui/ViewProviderPythonFeature.h>
 
 namespace AssemblyGui {
 
@@ -61,7 +61,7 @@ public:
 
 };
 
-
+typedef Gui::ViewProviderPythonFeatureT<ViewProviderItemAssembly> ViewProviderItemAssemblyPython;
 
 } // namespace AssemblyGui
 

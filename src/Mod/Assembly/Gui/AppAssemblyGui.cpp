@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (c) 2008 Jürgen Riegel (juergen.riegel@web.de)              *
+ *   Copyright (c) 2008 Jï¿½rgen Riegel (juergen.riegel@web.de)              *
  *                                                                         *
  *   This file is part of the FreeCAD CAx development system.              *
  *                                                                         *
@@ -83,6 +83,7 @@ void AssemblyGuiExport initAssemblyGui()
     AssemblyGui::ViewProviderItem        ::init();
     AssemblyGui::ViewProviderItemPart    ::init();
     AssemblyGui::ViewProviderItemAssembly::init();
+    AssemblyGui::ViewProviderItemAssemblyPython ::init();
 
     AssemblyGui::ViewProviderConstraintGroup::init();
     AssemblyGui::ViewProviderConstraint::init();

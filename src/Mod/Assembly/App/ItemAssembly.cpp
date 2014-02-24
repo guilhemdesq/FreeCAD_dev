@@ -35,7 +35,7 @@
 #include "ItemPart.h"
 #include "ConstraintGroup.h"
 #include <ItemAssemblyPy.h>
-
+#include <App/FeaturePythonPyImp.h>
 
 using namespace Assembly;
 
@@ -341,5 +341,26 @@ void ItemAssembly::finish(boost::shared_ptr<Solver> subsystem) {
 
 } //assembly
 
+
+// Python Assembly feature ---------------------------------------------------------
+
+namespace App {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(Assembly::ItemAssemblyPython, Assembly::ItemAssembly)
+template<> const char* Assembly::ItemAssemblyPython::getViewProviderName(void) const {
+    return "AssemblyGui::ViewProviderItemAssemblyPython";
+}
+template<> PyObject* Assembly::ItemAssemblyPython::getPyObject(void) {
+    if (PythonObject.is(Py::_None())) {
+        // ref counter is set to 1
+        PythonObject = Py::Object(new FeaturePythonPyT<Assembly::ItemAssemblyPy>(this),true);
+    }
+    return Py::new_reference_to(PythonObject);
+}
+/// @endcond
+
+// explicit template instantiation
+template class AssemblyExport FeaturePythonT<Assembly::ItemAssembly>;
+}
 
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (c) 2008 Jürgen Riegel (juergen.riegel@web.de)              *
+ *   Copyright (c) 2008 Jï¿½rgen Riegel (juergen.riegel@web.de)              *
  *                                                                         *
  *   This file is part of the FreeCAD CAx development system.              *
  *                                                                         *
@@ -72,6 +72,7 @@ void AssemblyExport initAssembly()
     Assembly::Item            ::init();
     Assembly::ItemAssembly    ::init();
     Assembly::ItemPart        ::init();
+    Assembly::ItemAssemblyPython    ::init();
 
     // constraint hirachy
     Assembly::Constraint        ::init();

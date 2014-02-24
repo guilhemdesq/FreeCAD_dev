@@ -25,7 +25,7 @@
 #define ItemAssembly_ItemAssembly_H
 
 #include <App/PropertyStandard.h>
-
+#include <App/FeaturePython.h>
 #include "Item.h"
 #include "Solver/Solver.h"
 
@@ -33,7 +33,7 @@ namespace Assembly
 {
 
 class ItemPart;
-
+class ItemAssemblyPy;
 class AssemblyExport ItemAssembly : public Assembly::Item
 {
     PROPERTY_HEADER(Assembly::ItemAssembly); 
@@ -95,7 +95,7 @@ public:
 private:
     std::stringstream message;
 };
-
+typedef App::FeaturePythonT<ItemAssembly> ItemAssemblyPython;
 } //namespace Assembly
 
 
