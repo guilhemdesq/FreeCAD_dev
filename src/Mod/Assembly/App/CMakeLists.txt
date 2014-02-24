@@ -62,11 +62,11 @@ if(MSVC)
 else(MSVC)
 	set(Solver_SRC  Solver/solver_3d_ext1.cpp	
 			Solver/solver_3d_ext2.cpp
-			Solver/solver_3d_ext3.cpp
 	)
 	
 	if(FREECAD_ASSEMBLY_DEBUG_FACILITIES)
 	set(Solver_SRC  ${Solver_SRC}	
+			Solver/solver_3d_ext3.cpp
 			Solver/solver_state_ext1.cpp
 			Solver/solver_state_ext2.cpp
 	)
