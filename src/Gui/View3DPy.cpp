@@ -148,8 +148,16 @@ void View3DInventorPy::init_type()
     add_varargs_method("setNavigationType",&View3DInventorPy::setNavigationType,"setNavigationType()");
     add_varargs_method("setAxisCross",&View3DInventorPy::setAxisCross,"switch the big axis-cross on and off");
     add_varargs_method("hasAxisCross",&View3DInventorPy::hasAxisCross,"check if the big axis-cross is on or off()");
-    add_varargs_method("addDraggerCallback",&View3DInventorPy::addDraggerCallback,"addDraggerCallback()");
-    add_varargs_method("removeDraggerCallback",&View3DInventorPy::removeDraggerCallback,"removeDraggerCallback()");
+    add_varargs_method("addDraggerCallback",&View3DInventorPy::addDraggerCallback,
+    		"addDraggerCallback(SoDragger, String CallbackType, function)\n"
+    		"Add a DraggerCalback function to the coin node\n"
+    		"Possibles types :\n"
+    		"'addFinishCallback','addStartCallback','addMotionCallback','addValueChangedCallback'\n");
+    add_varargs_method("removeDraggerCallback",&View3DInventorPy::removeDraggerCallback,
+    		"removeDraggerCallback(SoDragger, String CallbackType, function)\n"
+    		"Remove the DraggerCalback function from the coin node\n"
+    		"Possibles types :\n"
+    		"'addFinishCallback','addStartCallback','addMotionCallback','addValueChangedCallback'\n");
 }
 
 View3DInventorPy::View3DInventorPy(View3DInventor *vi)
