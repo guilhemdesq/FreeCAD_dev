@@ -84,6 +84,7 @@ void AssemblyGuiExport initAssemblyGui()
     AssemblyGui::ViewProviderItemPart    ::init();
     AssemblyGui::ViewProviderItemAssembly::init();
     AssemblyGui::ViewProviderItemAssemblyPython ::init();
+    AssemblyGui::ViewProviderItemPartPython ::init();
 
     AssemblyGui::ViewProviderConstraintGroup::init();
     AssemblyGui::ViewProviderConstraint::init();

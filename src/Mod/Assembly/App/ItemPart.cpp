@@ -42,6 +42,7 @@
 #include <BRep_Tool.hxx>
 #include <GeomAbs_CurveType.hxx>
 
+#include <App/FeaturePythonPyImp.h>
 
 using namespace Assembly;
 
@@ -230,4 +231,25 @@ boost::shared_ptr< Geometry3D > ItemPart::getGeometry3D(const char* Type) {
     return geometry;
 }
 
+}
+
+// Python ItemPart feature ---------------------------------------------------------
+
+namespace App {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(Assembly::ItemPartPython, Assembly::ItemPart)
+template<> const char* Assembly::ItemPartPython::getViewProviderName(void) const {
+    return "AssemblyGui::ViewProviderItemPartPython";
+}
+template<> PyObject* Assembly::ItemPartPython::getPyObject(void) {
+    if (PythonObject.is(Py::_None())) {
+        // ref counter is set to 1
+        PythonObject = Py::Object(new FeaturePythonPyT<Assembly::ItemPartPy>(this),true);
+    }
+    return Py::new_reference_to(PythonObject);
+}
+/// @endcond
+
+// explicit template instantiation
+template class AssemblyExport FeaturePythonT<Assembly::ItemAssembly>;
 }

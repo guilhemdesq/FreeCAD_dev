@@ -73,6 +73,7 @@ void AssemblyExport initAssembly()
     Assembly::ItemAssembly    ::init();
     Assembly::ItemPart        ::init();
     Assembly::ItemAssemblyPython    ::init();
+    Assembly::ItemPartPython    ::init();
 
     // constraint hirachy
     Assembly::Constraint        ::init();

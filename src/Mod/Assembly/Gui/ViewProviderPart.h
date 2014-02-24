@@ -30,7 +30,7 @@
 #include <Inventor/nodes/SoCoordinate3.h>
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoSwitch.h>
-
+#include <Gui/ViewProviderPythonFeature.h>
 
 namespace AssemblyGui {
 
@@ -74,7 +74,7 @@ public:
 #endif
 };
 
-
+typedef Gui::ViewProviderPythonFeatureT<ViewProviderItemPart> ViewProviderItemPartPython;
 
 } // namespace AssemblyGui
 

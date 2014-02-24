@@ -287,3 +287,15 @@ void ViewProviderItemPart::onChanged(const App::Property* prop) {
 
 
 #endif
+
+// Python feature -----------------------------------------------------------------------
+
+namespace Gui {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(AssemblyGui::ViewProviderItemPartPython, AssemblyGui::ViewProviderItemPart)
+/// @endcond
+
+// explicit template instantiation
+template class GuiExport ViewProviderPythonFeatureT<ViewProviderItemPart>;
+}
+

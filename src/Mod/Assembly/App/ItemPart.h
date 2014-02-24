@@ -27,13 +27,13 @@
 #include <App/PropertyLinks.h>
 #include "Item.h"
 #include "Solver/Solver.h"
-
+#include <App/FeaturePython.h>
 
 namespace Assembly
 {
 
 class ItemAssembly;
-
+class ItemPartPy;
 class AssemblyExport ItemPart : public Assembly::Item
 {
     PROPERTY_HEADER(Assembly::ItemPart);
@@ -66,7 +66,7 @@ public:
     virtual boost::shared_ptr<Geometry3D> getGeometry3D(const char* Type );
     void setCalculatedPlacement( boost::shared_ptr<Part3D> part );
 };
-
+typedef App::FeaturePythonT<ItemPart> ItemPartPython;
 } //namespace Assembly
 
 
