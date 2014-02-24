@@ -202,3 +202,15 @@ void ViewProviderBody::updateData(const App::Property* prop)
 
     PartGui::ViewProviderPart::updateData(prop);
 }
+
+// Python feature -----------------------------------------------------------------------
+
+namespace Gui {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(PartDesignGui::ViewProviderBodyPython, PartDesignGui::ViewProviderBody)
+/// @endcond
+
+// explicit template instantiation
+template class GuiExport ViewProviderPythonFeatureT<ViewProviderBody>;
+
+}

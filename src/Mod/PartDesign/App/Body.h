@@ -26,12 +26,13 @@
 
 #include <App/PropertyStandard.h>
 #include <Mod/Part/App/BodyBase.h>
-
+#include <App/FeaturePython.h>
 
 namespace PartDesign
 {
 
 class Feature;
+class BodyPy;
 
 class PartDesignExport Body : public Part::BodyBase
 {
@@ -108,7 +109,7 @@ public:
 private:
     App::DocumentObject* rememberTip;
 };
-
+typedef App::FeaturePythonT<Body> BodyPython;
 } //namespace PartDesign
 
 

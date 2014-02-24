@@ -25,7 +25,7 @@
 #define PARTGUI_ViewProviderBody_H
 
 #include <Mod/Part/Gui/ViewProvider.h>
-
+#include <Gui/ViewProviderPythonFeature.h>
 
 namespace PartDesignGui {
 
@@ -72,6 +72,7 @@ private:
 
 };
 
+typedef Gui::ViewProviderPythonFeatureT<ViewProviderBody> ViewProviderBodyPython;
 
 
 } // namespace PartDesignGui

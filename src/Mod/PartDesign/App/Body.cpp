@@ -42,7 +42,7 @@
 #include <Base/Console.h>
 #include <Mod/Part/App/DatumFeature.h>
 #include <Mod/Part/App/PartFeature.h>
-
+#include <App/FeaturePythonPyImp.h>
 
 using namespace PartDesign;
 
@@ -406,4 +406,24 @@ PyObject *Body::getPyObject(void)
     return Py::new_reference_to(PythonObject); 
 }
 
+}
+// Python Body feature ---------------------------------------------------------
+
+namespace App {
+/// @cond DOXERR
+PROPERTY_SOURCE_TEMPLATE(PartDesign::BodyPython, PartDesign::Body)
+template<> const char* PartDesign::BodyPython::getViewProviderName(void) const {
+    return "PartDesignGui::ViewProviderBodyPython";
+}
+template<> PyObject* PartDesign::BodyPython::getPyObject(void) {
+    if (PythonObject.is(Py::_None())) {
+        // ref counter is set to 1
+        PythonObject = Py::Object(new FeaturePythonPyT<PartDesign::BodyPy>(this),true);
+    }
+    return Py::new_reference_to(PythonObject);
+}
+/// @endcond
+
+// explicit template instantiation
+template class PartDesignExport FeaturePythonT<PartDesign::Body>;
 }
