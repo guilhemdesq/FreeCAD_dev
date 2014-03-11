@@ -112,6 +112,11 @@
         <UserDocu>trim a curve with a given id at a given reference point</UserDocu>
       </Documentation>
     </Methode>
+    <Methode Name="recomputeShape">
+      <Documentation>
+        <UserDocu>execute the feature</UserDocu>
+      </Documentation>
+    </Methode>
     <Attribute Name="ConstraintCount" ReadOnly="true">
       <Documentation>
         <UserDocu>Number of Constraints in this sketch</UserDocu>

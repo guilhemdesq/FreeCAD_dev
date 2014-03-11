@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (c) Jürgen Riegel          (juergen.riegel@web.de) 2010     *
+ *   Copyright (c) Jï¿½rgen Riegel          (juergen.riegel@web.de) 2010     *
  *                                                                         *
  *   This file is part of the FreeCAD CAx development system.              *
  *                                                                         *
@@ -380,6 +380,15 @@ PyObject* SketchObjectPy::trim(PyObject *args)
     Py_Return;
 
 }
+
+
+
+PyObject* SketchObjectPy::recomputeShape(PyObject *args)
+{
+	this->getSketchObjectPtr()->recomputeShape();
+    Py_Return;
+}
+
 
 Py::Int SketchObjectPy::getConstraintCount(void) const
 {

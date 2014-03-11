@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (c) Jürgen Riegel          (juergen.riegel@web.de) 2008     *
+ *   Copyright (c) Jï¿½rgen Riegel          (juergen.riegel@web.de) 2008     *
  *                                                                         *
  *   This file is part of the FreeCAD CAx development system.              *
  *                                                                         *
@@ -57,7 +57,8 @@ public:
         return "SketcherGui::ViewProviderSketch";
     }
     //@}
-
+    /// recompute the shape
+    int recomputeShape(void);
     /// add unspecified geometry
     int addGeometry(const Part::Geometry *geo);
     /// add unspecified geometry

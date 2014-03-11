@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (c) Jürgen Riegel          (juergen.riegel@web.de) 2008     *
+ *   Copyright (c) Jï¿½rgen Riegel          (juergen.riegel@web.de) 2008     *
  *                                                                         *
  *   This file is part of the FreeCAD CAx development system.              *
  *                                                                         *
@@ -53,6 +53,8 @@
 #include "SketchObject.h"
 #include "SketchObjectPy.h"
 #include "Sketch.h"
+
+#include <App/FeaturePythonPyImp.h>
 
 using namespace Sketcher;
 using namespace Base;
@@ -139,6 +141,23 @@ App::DocumentObjectExecReturn *SketchObject::execute(void)
 
     return App::DocumentObject::StdReturn;
 }
+
+int SketchObject::recomputeShape(void)
+{
+
+    Sketch sketch;
+    int dofs = sketch.setUpSketch(getCompleteGeometry(), Constraints.getValues(),
+                                  getExternalGeometryCount());
+    std::vector<Part::Geometry *> geomlist = sketch.extractGeometry();
+    Geometry.setValues(geomlist);
+    for (std::vector<Part::Geometry *>::iterator it=geomlist.begin(); it != geomlist.end(); ++it)
+        if (*it) delete *it;
+
+    Shape.setValue(sketch.toShape());
+
+    return 0;
+}
+
 
 int SketchObject::hasConflicts(void) const
 {
@@ -1630,6 +1649,13 @@ namespace App {
 PROPERTY_SOURCE_TEMPLATE(Sketcher::SketchObjectPython, Sketcher::SketchObject)
 template<> const char* Sketcher::SketchObjectPython::getViewProviderName(void) const {
     return "SketcherGui::ViewProviderPython";
+}
+template<> PyObject* Sketcher::SketchObjectPython::getPyObject(void) {
+    if (PythonObject.is(Py::_None())) {
+        // ref counter is set to 1
+        PythonObject = Py::Object(new FeaturePythonPyT<Sketcher::SketchObjectPy>(this),true);
+    }
+    return Py::new_reference_to(PythonObject);
 }
 /// @endcond
 
